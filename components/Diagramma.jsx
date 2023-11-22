@@ -20,7 +20,7 @@ const getTopics = async () => {
 };
 
 
-const App = () => {
+const Diagramma = () => {
     const [topiclar, setTopiclar] = useState([]);
     const [filteredMavzula, setFilteredMavzula] = useState([]);
     const [filterValue, setFilterValue] = useState({ newIsm: "", newSinfi: "", school: "" });
@@ -37,13 +37,15 @@ const App = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const a = await getTopics();
-            const topiclar = a?.topiclar;
+            if (typeof window === "undefined") {
+                const a = await getTopics();
+                const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+                const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
 
-            setTopiclar(filteredTopics);
-            setFilteredMavzula(filteredTopics);
+                setTopiclar(filteredTopics);
+                setFilteredMavzula(filteredTopics);
+            }
         };
 
         fetchData();
@@ -94,13 +96,15 @@ const App = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const a = await getTopics();
-            const topiclar = a?.topiclar;
+            if (typeof window === "undefined") {
+                const a = await getTopics();
+                const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+                const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
 
-            setTopiclar(filteredTopics);
-            setFilteredMavzula(filteredTopics);
+                setTopiclar(filteredTopics);
+                setFilteredMavzula(filteredTopics);
+            }
             const sababliCount = filteredTopics.filter((t) => t.newDarsQoldirish === "Sababli").length;
             setCountSababli(sababliCount);
         };
@@ -112,13 +116,15 @@ const App = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const a = await getTopics();
-            const topiclar = a?.topiclar;
+            if (typeof window === "undefined") {
+                const a = await getTopics();
+                const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+                const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
 
-            setTopiclar(filteredTopics);
-            setFilteredMavzula(filteredTopics);
+                setTopiclar(filteredTopics);
+                setFilteredMavzula(filteredTopics);
+            }
             const notSababliCount = filteredTopics.filter((t) => t.newDarsQoldirish !== "Sababli").length;
             setCountNotSababli(notSababliCount);
         };
@@ -131,14 +137,15 @@ const App = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const a = await getTopics();
-            const topiclar = a?.topiclar;
+            if (typeof window === "undefined") {
+                const a = await getTopics();
+                const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+                const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
 
-
-            setTopiclar(filteredTopics);
-            setFilteredMavzula(filteredTopics);
+                setTopiclar(filteredTopics);
+                setFilteredMavzula(filteredTopics);
+            }
 
             // Calculate percentage of items where newDarsQoldirish === "Sababli"
             const sababliCount = filteredTopics.filter((t) => t.newDarsQoldirish === "Sababli").length;
@@ -161,13 +168,15 @@ const App = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const a = await getTopics();
-            const topiclar = a?.topiclar;
+            if (typeof window === "undefined") {
+                const a = await getTopics();
+                const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+                const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
 
-            setTopiclar(filteredTopics);
-            setFilteredMavzula(filteredTopics);
+                setTopiclar(filteredTopics);
+                setFilteredMavzula(filteredTopics);
+            }
             const usersGroupedByDate = filteredTopics.reduce((acc, t) => {
                 const dateKey = new Date(t.createdAt).toLocaleDateString();
                 acc[dateKey] = (acc[dateKey] || 0) + 1;
@@ -253,4 +262,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default Diagramma;
